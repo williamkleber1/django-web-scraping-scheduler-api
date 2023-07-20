@@ -36,7 +36,7 @@ class AutomationViewSetTest(APITestCase):
     def test_list_automations(self):
         response = self.client.get(self.list_url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(len(response.data), 1)
+        self.assertEqual(len(response.data['results']), 1)
 
     def test_retrieve_automation(self):
         detail_url = reverse('automation-detail', kwargs={'pk': self.automation.id})
