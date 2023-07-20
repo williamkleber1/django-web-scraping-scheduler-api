@@ -1,4 +1,4 @@
-from rest_framework import viewsets
+from rest_framework import viewsets, mixins
 from django_filters import rest_framework as filters
 from django_filters.rest_framework import DjangoFilterBackend
 from .models import Automation, ScrapperRobot, ExecutionLog
@@ -29,9 +29,8 @@ class ScrapperRobotViewSet(viewsets.ModelViewSet):
     filter_backends = [DjangoFilterBackend]
     filterset_class = ScrapperRobotFilter
 
-class ExecutionLogViewSet(viewsets.ModelViewSet):
+class ExecutionLogViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):
     queryset = ExecutionLog.objects.all()
     serializer_class = ExecutionLogSerializer
-
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['automation', 'automation__scheduled_time', 'automation__http_method', 'status_code']
