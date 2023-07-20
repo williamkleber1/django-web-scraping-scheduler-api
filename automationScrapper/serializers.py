@@ -10,7 +10,7 @@ class ScraperRobotSerializer(serializers.ModelSerializer):
     # automations = AutomationSerializer(many=True)
     class Meta:
         model = ScraperRobot
-        fields = ['id', 'name', 'description', 'automations']
+        fields = ['id', 'name', 'description']
 
 class ExecutionLogSerializer(serializers.ModelSerializer):
     class Meta:
