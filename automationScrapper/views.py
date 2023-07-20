@@ -1,10 +1,10 @@
 from rest_framework import viewsets
 from django_filters import rest_framework as filters
 from django_filters.rest_framework import DjangoFilterBackend
-from .models import Automation, ScraperRobot, ExecutionLog
+from .models import Automation, ScrapperRobot, ExecutionLog
 from .serializers import (
     AutomationSerializer,
-    ScraperRobotSerializer,
+    ScrapperRobotSerializer,
     ExecutionLogSerializer,
 )
 
@@ -15,19 +15,19 @@ class AutomationViewSet(viewsets.ModelViewSet):
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['url', 'http_method', 'scheduled_frequency', 'scheduled_time']
 
-class ScraperRobotFilter(filters.FilterSet):
+class ScrapperRobotFilter(filters.FilterSet):
     description_contains = filters.CharFilter(field_name='description', lookup_expr='icontains')
 
     class Meta:
-        model = ScraperRobot
+        model = ScrapperRobot
         fields = []
 
-class ScraperRobotViewSet(viewsets.ModelViewSet):
-    queryset = ScraperRobot.objects.all()
-    serializer_class = ScraperRobotSerializer
+class ScrapperRobotViewSet(viewsets.ModelViewSet):
+    queryset = ScrapperRobot.objects.all()
+    serializer_class = ScrapperRobotSerializer
 
     filter_backends = [DjangoFilterBackend]
-    filterset_class = ScraperRobotFilter
+    filterset_class = ScrapperRobotFilter
 
 class ExecutionLogViewSet(viewsets.ModelViewSet):
     queryset = ExecutionLog.objects.all()

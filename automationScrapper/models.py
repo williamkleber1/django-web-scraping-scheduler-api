@@ -9,7 +9,7 @@ class TimeStampedModel(models.Model):
     class Meta:
         abstract = True
 
-class ScraperRobot(TimeStampedModel):
+class ScrapperRobot(TimeStampedModel):
     name = models.CharField(max_length=100)
     description = models.TextField()
 
@@ -29,7 +29,7 @@ class Automation(TimeStampedModel):
         ('Daily', 'Daily'),
         ('Weekly', 'Weekly'),
     ]
-    id_scraper_robot = models.ForeignKey(ScraperRobot, on_delete=models.CASCADE)
+    id_scraper_robot = models.ForeignKey(ScrapperRobot, on_delete=models.CASCADE)
     url = models.URLField()
     http_method = models.CharField(max_length=10, default="GET", choices=HTTPChoices)
     request_body = models.TextField(blank=True)
@@ -50,3 +50,4 @@ class ExecutionLog(TimeStampedModel):
 
     def __str__(self):
         return f'{self.automation.url} ({self.automation.http_method}) - {self.executed_at}'
+ 
