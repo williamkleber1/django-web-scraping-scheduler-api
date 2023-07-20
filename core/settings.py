@@ -41,7 +41,9 @@ INSTALLED_APPS = [
     'django_filters',
     'rest_framework',
     'rest_framework_swagger',
-    'automationScrapper'
+    'automationScrapper',
+    'celery',
+    'django_celery_beat'
 ]
 
 MIDDLEWARE = [
@@ -140,3 +142,9 @@ STATIC_ROOT = os.path.join(VENV_PATH, 'static_root')
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Configuração do Broker para o Celery (usando o Redis no Docker)
+BROKER_URL = 'redis://redis:6379/0'
+
+# Configuração do Beat Scheduler
+CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
