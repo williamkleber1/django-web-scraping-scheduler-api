@@ -41,7 +41,16 @@ Execução dos Robôs: Os robôs de webscrapping são executados automaticamente
 
 Filtros e Pesquisa: A API permite filtrar os agendamentos com base em critérios como status code de resposta, data de agendamento, tipo de método HTTP, entre outros.
 
-Configuração do Ambiente de Desenvolvimento
+## Utilização do Django Admin e Swagger
+
+Django Admin: Acesse o Django Admin em http://localhost:1357/admin/ para gerenciar os dados da aplicação. Utilize as credenciais de superusuário definidas no arquivo docker-compose.yml para acessar o painel administrativo.
+
+Swagger: A documentação da API pode ser visualizada em http://localhost:1357/docs/. O Swagger fornece informações detalhadas sobre os endpoints disponíveis, os formatos de dados esperados e retornados, permitindo testar as funcionalidades diretamente pela interface.
+
+Collection do Insomnia REST
+A aplicação também inclui uma collection do Insomnia REST, que pode ser importada para o Insomnia, um cliente de API REST. Com a collection importada, você pode testar e explorar os endpoints da API facilmente.
+
+## Configuração do Ambiente de Desenvolvimento
 Caso queira contribuir para o desenvolvimento da aplicação, siga os passos abaixo para configurar o ambiente de desenvolvimento:
 
 Clone o repositório para sua máquina local: git clone https://github.com/williamkleber1/django-web-scraping-scheduler-api
