@@ -1,0 +1,32 @@
+name: Run Tests
+
+on:
+
+    workflow_dispatch:
+        inputs:
+            branch:
+                description: 'Branch to run the tests'
+                required: true
+                default: 'workflow'
+jobs:
+  test:
+    name: Run tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
+
+      - name: Upgrade pip
+        run: python -m pip install --upgrade pip
+      
+      - name: Install dependencies
+        run: pip cache purge && pip install -r requirements.txt
+      
+
+      - name: Run tests
+        run: python manager.py test
