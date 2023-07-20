@@ -40,6 +40,15 @@ class Automation(TimeStampedModel):
     def __str__(self):
         return f'{self.url} - {self.http_method} ({self.scheduled_time})'
     
+    def get_cron_schedule(self):
+        return {
+            "minute": str(self.scheduled_time.minute),
+            "hour": "*" if self.scheduled_frequency == "Hourly" else str(self.scheduled_time.hour),
+            "day_of_month": "*",
+            "month_of_year": "*",
+            "day_of_week": str(self.created_at.weekday() + 1) if self.scheduled_frequency == "Weekly" else "*"
+        }
+    
 
 
 class ExecutionLog(TimeStampedModel):

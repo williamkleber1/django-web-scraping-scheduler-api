@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 import os
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -21,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-3ijp(+35ju^4@ec7e$win@sd$nea^e25=+h3!v0lnfriao$tpo'
+SECRET_KEY = 'django-insecure-)&^i&qie*=xq9yw@vij5ryv&nw@=jqi2q0bs+ti(x%_g*k&7=c'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -39,11 +40,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_filters',
-    'rest_framework',
     'rest_framework_swagger',
-    'automationScrapper',
-    'celery',
-    'django_celery_beat'
+    'rest_framework',
+    'django_celery_beat',
+    'automationScrapper'
 ]
 
 MIDDLEWARE = [
@@ -77,14 +77,15 @@ TEMPLATES = [
     },
 ]
 
+
 REST_FRAMEWORK = {
-   
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
      'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.AllowAny',
     ],
     'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
 }
-
 WSGI_APPLICATION = 'core.wsgi.application'
 
 
@@ -128,12 +129,16 @@ TIME_ZONE = 'America/Maceio'
 USE_I18N = True
 
 USE_TZ = True
+CRONJOBS = [
+    
+]
 
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
+
+STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 VENV_PATH = os.path.dirname(BASE_DIR)
 STATIC_ROOT = os.path.join(VENV_PATH, 'static_root')
@@ -143,8 +148,5 @@ STATIC_ROOT = os.path.join(VENV_PATH, 'static_root')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Configuração do Broker para o Celery (usando o Redis no Docker)
-BROKER_URL = 'redis://redis:6379/0'
-
-# Configuração do Beat Scheduler
-CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
+CELERY_BROKER_URL = "redis://redis:6379"
+CELERY_RESULT_BACKEND = "redis://redis:6379"
