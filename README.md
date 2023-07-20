@@ -16,7 +16,7 @@ A aplicação foi desenvolvida utilizando as seguintes tecnologias:
 
 Para executar a aplicação localmente, é necessário ter o Docker instalado em sua máquina. Siga os passos abaixo:
 
-1. Clone o repositório para sua máquina local: `git clone https://github.com/seu-usuario/nome-do-repositorio.git`
+1. Clone o repositório para sua máquina local: `git clone https://github.com/williamkleber1/django-web-scraping-scheduler-api.git`
 
 2. Navegue para o diretório do projeto:
 
